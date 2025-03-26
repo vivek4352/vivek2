@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UIT RGPV - University Institute of Technology, RGPV Bhopal</title>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .top-bar {
+            background-color: #1a3e72;
+            color: white;
+            padding: 8px 0;
+            font-size: 14px;
+        }
+
+        .top-bar-container {
+            display: flex;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a:hover {
+            color: #ffcc00;
+        }
+
+        .main-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            height: 80px;
+            margin-right: 15px;
+        }
+
+        .logo-text h1 {
+            font-size: 22px;
+            color: #1a3e72;
+            margin-bottom: 5px;
+        }
+
+        .logo-text p {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: #1a3e72;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .nav-menu {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .nav-menu li {
+            position: relative;
+        }
+
+        .nav-menu li a {
+            color: white;
+            padding: 15px 20px;
+            display: block;
+            transition: all 0.3s;
+        }
+
+        .nav-menu li a:hover {
+            background-color: #0d2a4d;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: white;
+            width: 200px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 100;
+        }
+
+        .dropdown-menu li a {
+            color: #333;
+            padding: 10px 15px;
+        }
+
+        .dropdown-menu li a:hover {
+            background-color: #f0f0f0;
+            color: #1a3e72;
+        }
+
+        .nav-menu li:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Hero Section with Slideshow */
+        .hero {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+        }
+
+        /* Slideshow container */
+        .slideshow-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Hide the images by default */
+        .mySlides {
+            display: none;
+            width: 100%;
+            height: 100%;
+        }
+
+        .mySlides img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Next & previous buttons */
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            margin-top: -22px;
+            padding: 16px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+            background-color: rgba(0,0,0,0.4);
+        }
+
+        /* Position the "next button" to the right */
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+        /* On hover, add a black background color with a little bit see-through */
+        .prev:hover, .next:hover {
+            background-color: rgba(0,0,0,0.8);
+        }
+
+        .hero-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .hero-content h2 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+        }
+
+        .main-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-title {
+            color: #1a3e72;
+            border-bottom: 2px solid #1a3e72;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 22px;
+        }
+
+        .news-item {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .news-item:last-child {
+            border-bottom: none;
+        }
+
+        .news-item h3 {
+            color: #1a3e72;
+            margin-bottom: 10px;
+        }
+
+        .news-item p {
+            margin-bottom: 10px;
+        }
+
+        .news-item .date {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .read-more {
+            color: #1a3e72;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 5px;
+        }
+
+        .read-more:hover {
+            text-decoration: underline;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .sidebar-widget {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .quick-links ul {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .quick-links li a {
+            display: block;
+            padding: 8px 10px;
+            background-color: #f0f0f0;
+            border-radius: 3px;
+            transition: all 0.3s;
+        }
+
+        .quick-links li a:hover {
+            background-color: #1a3e72;
+            color: white;
+        }
+
+        .important-dates ul li {
+            padding: 8px 0;
+            border-bottom: 1px dashed #eee;
+        }
+
+        .important-dates ul li:last-child {
+            border-bottom: none;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1a3e72;
+            color: white;
+            padding: 40px 0 20px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .footer-column h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: #ffcc00;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul li a:hover {
+            color: #ffcc00;
+        }
+
+        .contact-info p {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .contact-info i {
+            margin-right: 10px;
+            color: #ffcc00;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            margin-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+
+            .quick-links ul {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: #1a3e72;
+                z-index: 100;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-menu li {
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .dropdown-menu {
+                position: static;
+                width: 100%;
+                opacity: 1;
+                visibility: visible;
+                display: none;
+                background-color: #0d2a4d;
+            }
+
+            .dropdown-menu li a {
+                padding-left: 40px;
+                color: white;
+            }
+
+            .nav-menu li:hover .dropdown-menu {
+                display: block;
+            }
+
+            .hero {
+                height: 300px;
+            }
+
+            .hero-content h2 {
+                font-size: 22px;
+            }
+
+            .main-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .logo-container {
+                margin-bottom: 15px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .top-bar-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .hero {
+                height: 250px;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="top-bar">
+            <div class="top-bar-container">
+                <div class="contact-info">
+                    <span>Email: info@uitrgpv.ac.in</span>
+                    <span> | </span>
+                    <span>Phone: +91-755-1234567</span>
+                </div>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i> Facebook</a>
+                    <a href="#"><i class="fab fa-twitter"></i> Twitter</a>
+                    <a href="#"><i class="fab fa-youtube"></i> YouTube</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="main-header">
+            <div class="logo-container">
+                <img src="https://www.uitrgpv.ac.in/images/logo.png" alt="UIT RGPV Logo" class="logo">
+                <div class="logo-text">
+                    <h1>University Institute of Technology</h1>
+                    <p>Rajiv Gandhi Proudyogiki Vishwavidyalaya, Bhopal</p>
+                </div>
+            </div>
+            <div class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+        
+        <nav>
+            <div class="nav-container">
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="#">Home</a></li>
+                    <li>
+                        <a href="#">About Us</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">About UIT</a></li>
+                            <li><a href="#">Vision & Mission</a></li>
+                            <li><a href="#">Administration</a></li>
+                            <li><a href="#">Infrastructure</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">Academics</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Departments</a></li>
+                            <li><a href="#">Courses</a></li>
+                            <li><a href="#">Syllabus</a></li>
+                            <li><a href="#">Academic Calendar</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Admission</a></li>
+                    <li><a href="#">Examination</a></li>
+                    <li><a href="#">Research</a></li>
+                    <li><a href="#">Placement</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section with Slideshow -->
+    <section class="hero">
+        <div class="slideshow-container">
+            <div class="mySlides fade">
+                <img src="https://www.uitrgpv.ac.in/images/banner.jpg" alt="UIT RGPV Campus">
+            </div>
+            <div class="mySlides fade">
+                <img src="new_slide1.jpg" alt="UIT RGPV Services - Auto Business Customer Services Discovery Facility">
+            </div>
+            <!-- Next/previous buttons -->
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        </div>
+        <div class="hero-content">
+            <h2>Welcome to University Institute of Technology</h2>
+            <p>An Institute of Rajiv Gandhi Proudyogiki Vishwavidyalaya, Bhopal</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container">
+        <main class="main-content">
+            <h2 class="section-title">Latest News & Announcements</h2>
+            
+            <div class="news-item">
+                <h3>Admission Open for Academic Session 2023-24</h3>
+                <p class="date">June 15, 2023</p>
+                <p>Applications are invited for admission to various undergraduate and postgraduate programs for the academic session 2023-24. The last date to apply is July 15, 2023.</p>
+                <a href="#" class="read-more">Read More →</a>
+            </div>
+            
+            <div class="news-item">
+                <h3>UIT RGPV Ranked Among Top Engineering Colleges</h3>
+                <p class="date">May 28, 2023</p>
+                <p>University Institute of Technology has been ranked among the top 50 engineering colleges in Central India by the Education Times Survey 2023.</p>
+                <a href="#" class="read-more">Read More →</a>
+            </div>
+            
+            <div class="news-item">
+                <h3>Campus Placement Drive by TCS</h3>
+                <p class="date">May 15, 2023</p>
+                <p>Tata Consultancy Services will be conducting a campus placement drive on June 5, 2023 for final year students of B.Tech and M.Tech programs.</p>
+                <a href="#" class="read-more">Read More →</a>
+            </div>
+            
+            <div class="news-item">
+                <h3>Workshop on Artificial Intelligence</h3>
+                <p class="date">April 30, 2023</p>
+                <p>The Computer Science Department is organizing a 3-day workshop on Artificial Intelligence and Machine Learning from May 15-17, 2023.</p>
+                <a href="#" class="read-more">Read More →</a>
+            </div>
+        </main>
+        
+        <aside class="sidebar">
+            <div class="sidebar-widget quick-links">
+                <h3 class="section-title">Quick Links</h3>
+                <ul>
+                    <li><a href="#">RGPV Website</a></li>
+                    <li><a href="#">Student Portal</a></li>
+                    <li><a href="#">Exam Results</a></li>
+                    <li><a href="#">Time Table</a></li>
+                    <li><a href="#">Library</a></li>
+                    <li><a href="#">Scholarships</a></li>
+                    <li><a href="#">Alumni</a></li>
+                    <li><a href="#">Downloads</a></li>
+                </ul>
+            </div>
+            
+            <div class="sidebar-widget important-dates">
+                <h3 class="section-title">Important Dates</h3>
+                <ul>
+                    <li>June 15 - July 15: Admission Process</li>
+                    <li>July 20: Commencement of Classes</li>
+                    <li>August 15: Independence Day Celebration</li>
+                    <li>September 5: Teachers' Day</li>
+                    <li>October 1: Mid-Term Exams</li>
+                </ul>
+            </div>
+            
+            <div class="sidebar-widget">
+                <h3 class="section-title">Notice Board</h3>
+                <ul>
+                    <li>Last date for fee submission extended to June 30</li>
+                    <li>Summer vacation from May 15 to June 10</li>
+                    <li>Hostel allotment list published</li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>About UIT</h3>
+                <p>University Institute of Technology is a premier engineering institute under Rajiv Gandhi Proudyogiki Vishwavidyalaya, Bhopal offering quality technical education since 2006.</p>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Academics</a></li>
+                    <li><a href="#">Admission</a></li>
+                    <li><a href="#">Examination</a></li>
+                    <li><a href="#">Placement</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <div class="contact-info">
+                    <p><i class="fas fa-map-marker-alt"></i> Airport Road, Gandhi Nagar, Bhopal, MP - 462033</p>
+                    <p><i class="fas fa-phone"></i> +91-755-1234567, 1234568</p>
+                    <p><i class="fas fa-envelope"></i> info@uitrgpv.ac.in</p>
+                    <p><i class="fas fa-globe"></i> www.uitrgpv.ac.in</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2023 University Institute of Technology, RGPV Bhopal. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Font Awesome for icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    
+    <!-- JavaScript -->
+    <script>
+        // Mobile Menu Toggle
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            document.getElementById('navMenu').classList.toggle('active');
+        });
+
+        // Dropdown Menu for Mobile
+        const dropdownParents = document.querySelectorAll('.nav-menu > li');
+        dropdownParents.forEach(parent => {
+            if (parent.querySelector('.dropdown-menu')) {
+                parent.addEventListener('click', function(e) {
+                    if (window.innerWidth <= 768) {
+                        e.preventDefault();
+                        const dropdown = this.querySelector('.dropdown-menu');
+                        dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+                    }
+                });
+            }
+        });
+
+        // Close dropdown when clicking outside on mobile
+        document.addEventListener('click', function(e) {
+            if (window.innerWidth <= 768) {
+                if (!e.target.closest('.nav-menu li')) {
+                    document.querySelectorAll('.dropdown-menu').forEach(dropdown => {
+                        dropdown.style.display = 'none';
+                    });
+                }
+            }
+        });
+
+        // Responsive adjustments
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                document.getElementById('navMenu').style.display = 'flex';
+                document.querySelectorAll('.dropdown-menu').forEach(dropdown => {
+                    dropdown.style.display = '';
+                });
+            } else {
+                document.getElementById('navMenu').style.display = 'none';
+            }
+        });
+
+        // Slideshow functionality
+        let slideIndex = 1;
+        showSlides(slideIndex);
+
+        // Next/previous controls
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            if (n > slides.length) {slideIndex = 1}
+            if (n < 1) {slideIndex = slides.length}
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slides[slideIndex-1].style.display = "block";
+        }
+
+        // Auto-advance slides every 5 seconds
+        setInterval(function() {
+            plusSlides(1);
+        }, 5000);
+    </script>
+</body>
+</html>
